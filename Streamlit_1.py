@@ -93,15 +93,11 @@ if page == pages[2] :
   
   def prediction(classifier):
     if classifier == 'Random Forest':
-        clf = RandomForestClassifier()
+        clf = joblib.load("random_forest_model.joblib")
     elif classifier == 'SVC':
-        clf = SVC()
+        clf = joblib.load("svc_model.joblib")
     elif classifier == 'Logistic Regression':
-        clf = LogisticRegression()
-    clf.fit(X_train, y_train)
-    
-    # Save the trained model
-    joblib.dump(clf, f"{classifier.lower().replace(' ', '_')}_model.joblib")
+        clf = joblib.load("logistic_regression_model.joblib")
 
     return clf
   
